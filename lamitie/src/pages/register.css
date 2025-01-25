@@ -1,0 +1,180 @@
+.register-container {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.layout-wrapper {
+    background-color: #ffffff;
+    height: 1117px;
+    width: 1728px;
+}
+
+.layout {
+    background-color: #100f0f;
+    height: 1117px;
+    position: relative;
+}
+
+.background-overlay {
+    background-color: #100f0f;
+    height: 1117px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1728px;
+}
+
+.logo {
+    height: 118px;
+    left: 60px;
+    object-fit: cover;
+    position: absolute;
+    top: 41px;
+    width: 177px;
+}
+
+.navigation-header {
+    background-color: transparent;
+    height: 32px;
+    left: 1082px;
+    opacity: 0.8;
+    position: absolute;
+    top: 84px;
+    width: 533px;
+}
+
+.header-item {
+    color: #ffffff;
+    font-family: "Pirata One-Regular", Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    position: absolute;
+    width: 112px;
+}
+
+.header-item:nth-child(1) { left: 0; }
+.header-item:nth-child(2) { left: 151px; }
+.header-item:nth-child(3) { left: 326px; }
+
+.menu-controller {
+    height: 32px;
+    left: 501px;
+    position: absolute;
+    top: 0;
+    width: 32px;
+}
+
+.audio-control {
+    height: 51px;
+    left: 1565px;
+    position: absolute;
+    top: 994px;
+    width: 50px;
+}
+
+.audio-wrapper {
+    height: 51px;
+    position: relative;
+}
+
+.audio-icon {
+    height: 24px;
+    left: 13px;
+    position: absolute;
+    top: 14px;
+    width: 24px;
+}
+
+.audio-toggle {
+    border: 1px solid #d9d9d9;
+    height: 51px;
+    position: absolute;
+    width: 50px;
+}
+
+.form-section {
+    height: 601px;
+    left: 433px;
+    position: absolute;
+    top: 247px;
+    width: 840px;
+}
+
+.submit-button {
+    all: unset;
+    box-sizing: border-box;
+    height: 69px;
+    position: absolute;
+    top: 532px;
+    width: 163px;
+}
+
+.submit-wrapper {
+    height: 69px;
+    position: relative;
+}
+
+.submit-button-bg {
+    border: 1px solid #d9d9d9;
+    height: 52px;
+    position: absolute;
+    top: 10px;
+    width: 163px;
+}
+
+.submit-text {
+    color: #ffffff;
+    font-family: "Pirata One-Regular", Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    position: absolute;
+    text-align: center;
+    width: 130px;
+}
+
+.input-fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 45px 59px;
+    position: absolute;
+    top: 105px;
+    width: 840px;
+}
+
+.input-group,
+.input-wrapper {
+    border-bottom: 1px solid #d9d9d9;
+    height: 54px;
+    position: relative;
+}
+
+.input-label {
+    color: #ffffff;
+    font-family: "Overlock-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    position: absolute;
+    top: 13px;
+    white-space: nowrap;
+}
+
+.dropdown-icon,
+.dropdown-image {
+    height: 32px;
+    position: absolute;
+    top: 14px;
+    width: 32px;
+}
+
+.form-title {
+    color: #ffffff;
+    font-family: "Pirata One-Regular", Helvetica;
+    font-size: 32px;
+    font-weight: 400;
+    position: absolute;
+    top: -1px;
+    white-space: nowrap;
+}
