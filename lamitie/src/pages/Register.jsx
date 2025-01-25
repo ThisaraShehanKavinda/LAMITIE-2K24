@@ -78,3 +78,4 @@ export const RegisterFrame = () => {
         </div>
     );
 };
+export default RegisterFrame;
