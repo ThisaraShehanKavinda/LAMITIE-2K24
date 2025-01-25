@@ -1,81 +1,118 @@
-import React from "react";
-import dropDownIcon from "../Images/drop down icon.svg";
-import lamitie2K24Logo from "../Images/Lamitie_2k24_Logo.png";
-import { default as image, default as muteIcon } from "../Images/mute icon.svg";
-import sideBarController from "../Images/Side Bar Controller.svg";
+import React, { useState } from "react";
+import ReactHowler from "react-howler";
+import { FaChevronDown, FaVolumeMute, FaVolumeUp } from "react-icons/fa";
+import videoBackground from "../Images/background-loop.mp4";
+import backgroundMusic from "../Images/background-music.mp3";
 import "./register.css";
 
 export const RegisterFrame = () => {
+    const [isMusicMuted, setIsMusicMuted] = useState(false); 
+
+    const toggleMusicMute = () => setIsMusicMuted(!isMusicMuted);
+
     return (
-        <div className="register-container">
-            <div className="layout-wrapper">
-                <div className="layout">
-                    <div className="background-overlay" />
+        <div className="register-frame">
+            {/* Background Video */}
+            <video className="background-video" autoPlay loop muted>
+                <source src={videoBackground} type="video/mp4" />
+            </video>
 
-                    <img
-                        className="logo"
-                        alt="Lamitie logo"
-                        src={lamitie2K24Logo}
-                    />
+            {/* Background Music */}
+            <ReactHowler src={backgroundMusic} playing={!isMusicMuted} loop={true} volume={0.5} />
 
-                    <header className="navigation-header">
-                        <div className="header-item">REGISTER</div>
-                        <div className="header-item">COMPLETED</div>
-                        <div className="header-item">SIGN OUT</div>
-                        <img
-                            className="menu-controller"
-                            alt="Menu controller"
-                            src={sideBarController}
-                        />
-                    </header>
+            {/* Header */}
+            <header className="header">
+                <h1 className="header-title">Register</h1>
+            </header>
 
-                    <div className="audio-control">
-                        <div className="audio-wrapper">
-                            <img className="audio-icon" alt="Mute icon" src={muteIcon} />
-                            <div className="audio-toggle" />
+            {/* Registration Form */}
+            <div className="registration-form">
+                <h2 className="form-title">Register Now</h2>
+
+                {/* Form Fields */}
+                <div className="form-row">
+                    <div className="form-group">
+                        <label htmlFor="title">Title</label>
+                        <div className="select-wrapper">
+                            <select id="title" className="form-control">
+                                <option>Select your title</option>
+                                <option>Mr</option>
+                                <option>Ms</option>
+                                <option>Miss</option>
+                            </select>
+                            <FaChevronDown className="icon" />
                         </div>
                     </div>
-
-                    <div className="form-section">
-                        <button className="submit-button">
-                            <div className="submit-wrapper">
-                                <div className="submit-button-bg" />
-                                <div className="submit-text">REGISTER</div>
-                            </div>
-                        </button>
-
-                        <div className="input-fields">
-                            <div className="input-group">
-                                <div className="input-label">Select&nbsp;&nbsp;your title</div>
-                                <img
-                                    className="dropdown-icon"
-                                    alt="Drop down icon"
-                                    src={dropDownIcon}
-                                />
-                            </div>
-                            <div className="input-wrapper">
-                                <div className="input-label">Name</div>
-                            </div>
-                            <div className="input-group">
-                                <div className="input-label">Index</div>
-                            </div>
-                            <div className="input-wrapper">
-                                <div className="input-label">Contact</div>
-                            </div>
-                            <div className="input-group">
-                                <div className="input-label">Email</div>
-                            </div>
-                            <div className="input-group">
-                                <div className="input-label">Combination</div>
-                                <img className="dropdown-image" alt="Drop down icon" src={image} />
-                            </div>
-                        </div>
-
-                        <div className="form-title">REGISTER NOW</div>
+                    <div className="form-group">
+                        <label htmlFor="name">Name</label>
+                        <input
+                            id="name"
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter your name"
+                        />
                     </div>
                 </div>
+
+                <div className="form-row">
+                    <div className="form-group">
+                        <label htmlFor="index">Index</label>
+                        <input
+                            id="index"
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter your index"
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="contact">Contact</label>
+                        <input
+                            id="contact"
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter your contact"
+                        />
+                    </div>
+                </div>
+
+                <div className="form-row">
+                    <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            id="email"
+                            type="email"
+                            className="form-control"
+                            placeholder="Enter your email"
+                        />
+                    </div>
+                </div>
+
+                <div className="form-row">
+                    <div className="form-group">
+                        <label htmlFor="combination">Combination</label>
+                        <div className="select-wrapper">
+                            <select id="combination" className="form-control">
+                                <option>Select your combination</option>
+                                <option>CS/STAT/MATHS</option>
+                                <option>CS/PHY/MAT</option>
+                                <option>CS/AMT/MAT</option>
+                            </select>
+                            <FaChevronDown className="icon" />
+                        </div>
+                    </div>
+                </div>
+
+                {/* Register Button */}
+                <button className="register-button">Register</button>
+            </div>
+
+            {/* Mute/Unmute Button */}
+            <div className="mute-button" onClick={toggleMusicMute}>
+                {isMusicMuted ? <FaVolumeMute /> : <FaVolumeUp />}
             </div>
         </div>
     );
 };
+
+
 export default RegisterFrame;
