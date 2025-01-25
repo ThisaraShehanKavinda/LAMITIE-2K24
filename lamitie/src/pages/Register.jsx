@@ -4,6 +4,7 @@ import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 import videoBackground from "../Images/background-loop.mp4";
 import backgroundMusic from "../Images/background-music.mp3";
 import logo from '../Images/Lamitie_2k24_Logo.png';
+import controller from '../Images/Side Bar Controller.svg';
 import "./register.css";
 
 export const RegisterFrame = () => {
@@ -21,11 +22,24 @@ export const RegisterFrame = () => {
             {/* Background Music */}
             <ReactHowler src={backgroundMusic} playing={!isMusicMuted} loop={true} volume={0.5} />
 
+            <img src={logo} alt="Logo" className="logo" />
+
             {/* Header */}
             <header className="header">
-            <img src={logo} alt="Logo" className="logo" />
-                <h1 className="header-title">Register</h1>
-            </header>
+    
+    
+   {/* Container for the options */}
+<div className="header-options">
+    <h1 className="header-title" data-text="Register">Register</h1>
+    <h1 className="header-title" data-text="Completed">Completed</h1>
+    <h1 className="header-title" data-text="Sign Out">Sign Out</h1>
+    <img src={controller} alt="controller" className="controller" />
+</div>
+
+    
+    
+</header>
+
 
             {/* Registration Form */}
             <div className="registration-form">

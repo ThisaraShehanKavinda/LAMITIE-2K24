@@ -64,15 +64,108 @@ body, html {
 }
 
 /* Header */
+/* General styling for the header */
 .header {
-    text-align: center;
-    margin-bottom: 20px;
+    display: flex; /* Enable Flexbox */
+    justify-content: space-between; /* Space out the logo and controller */
+    
+    padding: 20px;
+    
+}
+
+
+
+
+.header-options {
+    display: flex; /* Arrange the options in a row */
+    gap: 40px; /* Add space between the options */
+    font-family: 'CaribbeanFont', sans-serif; /* Apply the Caribbean font */
+    font-size: 1rem;
+    font-weight: bold;
+    position: absolute; /* Position it absolutely within the header */
+    right: 15%; /* Adjust distance from the right side */
 }
 
 .header-title {
-    font-size: 3rem;
-    letter-spacing: 2px;
+    position: relative;
+    color: #ffffff; /* Default text color */
+    cursor: pointer;
+    overflow: hidden; /* Hide overflow to clip text */
+    transition: color 0.3s ease;
 }
+
+.header-title::before,
+.header-title::after {
+    content: attr(data-text); /* Use the same text as the element */
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    color: #ffffff; /* Text color */
+    transition: transform 0.3s ease;
+}
+
+.header-title::before {
+    top: 0;
+    clip-path: inset(0 0 50% 0); /* Show the top half */
+}
+
+.header-title::after {
+    top: 0;
+    clip-path: inset(50% 0 0 0); /* Show the bottom half */
+}
+
+.header-title:hover::before {
+    transform: translateX(-2px); /* Move the top half up */
+}
+
+.header-title:hover::after {
+    transform: translateX(2px); /* Move the bottom half down */
+}
+
+.header-title:hover {
+    color: transparent; /* Hide original text */
+}
+
+.header-title:hover::after,
+.header-title:hover::before {
+    color: #ffffff;
+}
+
+.header-title::after {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #ffffff; /* Horizontal stroke */
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.header-title:hover::after {
+    transform: scaleX(1); /* Show the stroke on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Styling for the controller icon */
+.controller {
+    height: 20px; /* Adjust the controller icon size */
+    width: auto;
+}
+
+
 
 /* Registration Form */
 .registration-form {
