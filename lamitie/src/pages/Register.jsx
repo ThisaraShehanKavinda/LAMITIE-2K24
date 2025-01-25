@@ -3,6 +3,7 @@ import ReactHowler from "react-howler";
 import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 import videoBackground from "../Images/background-loop.mp4";
 import backgroundMusic from "../Images/background-music.mp3";
+import logo from '../Images/Lamitie_2k24_Logo.png';
 import "./register.css";
 
 export const RegisterFrame = () => {
@@ -22,6 +23,7 @@ export const RegisterFrame = () => {
 
             {/* Header */}
             <header className="header">
+            <img src={logo} alt="Logo" className="logo" />
                 <h1 className="header-title">Register</h1>
             </header>
 

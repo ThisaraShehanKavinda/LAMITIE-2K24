@@ -30,6 +30,15 @@ body, html {
     
 }
 
+.logo {
+    position: absolute;
+    top: 3%; /* Adjust the top distance from the edge */
+    left: 10%; /* Adjust the left distance from the edge */
+    height: 105px; /* Set the height of the logo */
+    width: auto; /* Keep the aspect ratio intact */
+}
+
+
 .register-frame {
     position: relative;
     width: 100vw;
