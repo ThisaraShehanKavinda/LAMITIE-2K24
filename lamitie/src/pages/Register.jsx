@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactHowler from "react-howler";
-import { FaChevronDown, FaVolumeMute, FaVolumeUp } from "react-icons/fa";
+import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 import videoBackground from "../Images/background-loop.mp4";
 import backgroundMusic from "../Images/background-music.mp3";
 import "./register.css";
@@ -32,7 +32,7 @@ export const RegisterFrame = () => {
                 {/* Form Fields */}
                 <div className="form-row">
                     <div className="form-group">
-                        <label htmlFor="title">Title</label>
+                       
                         <div className="select-wrapper">
                             <select id="title" className="form-control">
                                 <option>Select your title</option>
@@ -40,11 +40,11 @@ export const RegisterFrame = () => {
                                 <option>Ms</option>
                                 <option>Miss</option>
                             </select>
-                            <FaChevronDown className="icon" />
+                            
                         </div>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="name">Name</label>
+                        
                         <input
                             id="name"
                             type="text"
@@ -56,7 +56,7 @@ export const RegisterFrame = () => {
 
                 <div className="form-row">
                     <div className="form-group">
-                        <label htmlFor="index">Index</label>
+                        
                         <input
                             id="index"
                             type="text"
@@ -65,7 +65,7 @@ export const RegisterFrame = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="contact">Contact</label>
+                        
                         <input
                             id="contact"
                             type="text"
@@ -77,7 +77,7 @@ export const RegisterFrame = () => {
 
                 <div className="form-row">
                     <div className="form-group">
-                        <label htmlFor="email">Email</label>
+                        
                         <input
                             id="email"
                             type="email"
@@ -89,7 +89,7 @@ export const RegisterFrame = () => {
 
                 <div className="form-row">
                     <div className="form-group">
-                        <label htmlFor="combination">Combination</label>
+                        
                         <div className="select-wrapper">
                             <select id="combination" className="form-control">
                                 <option>Select your combination</option>
@@ -97,13 +97,19 @@ export const RegisterFrame = () => {
                                 <option>CS/PHY/MAT</option>
                                 <option>CS/AMT/MAT</option>
                             </select>
-                            <FaChevronDown className="icon" />
+                            
                         </div>
                     </div>
                 </div>
 
                 {/* Register Button */}
-                <button className="register-button">Register</button>
+                <button className="register-button">
+    <span className="register-text">REGISTER</span>
+</button>
+
+
+
+
             </div>
 
             {/* Mute/Unmute Button */}

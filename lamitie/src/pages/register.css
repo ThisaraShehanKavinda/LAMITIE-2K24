@@ -1,4 +1,25 @@
-/* General Styles */
+@font-face {
+    font-family: 'Roboto Condensed'; /* Name the font family */
+    src: url('../fonts/RobotoCondensed-VariableFont_wght.ttf') format('truetype'); /* Path to the font file */
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto Condensed'; /* Name the font family */
+    src: url('../fonts/RobotoCondensed-Italic-VariableFont_wght.ttf') format('truetype'); /* Path to the italic font file */
+    font-weight: 400;
+    font-style: italic;
+}
+/* Define the font-face */
+@font-face {
+    font-family: 'CaribbeanFont'; /* Name for your font */
+    src: url('../fonts/MarcellusSC-Regular.ttf') format('truetype'); /* Path to your .ttf font file */
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 body, html {
     margin: 0;
     padding: 0;
@@ -17,7 +38,7 @@ body, html {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #ffffffb5;
+    color: #ffffff;
     z-index: 1;
 }
 
@@ -47,23 +68,31 @@ body, html {
 /* Registration Form */
 .registration-form {
     background: rgba(0, 0, 0, 0);
-    padding: 20px;
+    padding: 40px;
     border-radius: 10px;
-    width: 90%;
+    width: 70%;
     max-width: 600px;
     text-align: center;
+    font-family: 'Roboto Condensed'; /* Apply Roboto Condensed font */
+    font-weight: 400;
+    font-style: normal; /* You can change this to 'italic' if you want the italic style */
 }
 
 .form-title {
-    font-size: 2rem;
-    margin-bottom: 20px;
+    font-family: 'CaribbeanFont', sans-serif; /* Apply the Caribbean font */
+    font-size: 1.8rem;
+    margin-bottom: 50px;
+    color: #fff;
+    font-weight: bold; /* Make the text bold */
 }
+
+
 
 .form-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
-    gap: 10px;
+    margin-bottom: 65px;
+    gap: 30px;
 }
 
 .form-group {
@@ -73,27 +102,81 @@ body, html {
     text-align: left;
 }
 
-label {
+
+input,
+select {
+    padding: 30px;
     font-size: 1rem;
-    margin-bottom: 5px;
+    font-family: 'Roboto Condensed'; /* Apply Roboto Condensed font */
+    font-weight: 400;
+    font-style: normal; /* You can change this to 'italic' if you want the italic style */
+    border-radius: 0px;
+    border: none;
+    border-bottom: 2px solid #fff;
+    background: transparent;
+    outline: none;
+    color: #fff;
+    
 }
 
-input, select {
-    padding: 10px;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    outline: none;
-}
+
 
 .select-wrapper {
     position: relative;
+    font-family: 'Roboto Condensed'; /* Apply Roboto Condensed font */
+    font-weight: 400;
+    font-style: normal; /* You can change this to 'italic' if you want the italic style */
 }
 
 select {
     width: 100%;
     padding-right: 30px;
+    background-color: transparent; /* Ensure the select itself has a transparent background */
+    color: #fff; /* Default text color for the select input */
+    font-family: 'Roboto Condensed'; /* Apply Roboto Condensed font */
+    font-weight: 400;
+    font-style: normal; /* You can change this to 'italic' if you want the italic style */
 }
+
+select option {
+    background-color: rgb(24, 14, 1); /* Transparent background for the options */
+    color: #ffffff9f; /* Default text color for the options */
+    font-size: 1rem;
+    font-family: 'Roboto Condensed'; /* Apply Roboto Condensed font */
+    font-weight: 400;
+    font-style: normal; /* You can change this to 'italic' if you want the italic style */
+}
+
+select:focus,
+select:active {
+    color: #ffffff; /* Text color when focused or active */
+    font-family: 'Roboto Condensed'; /* Apply Roboto Condensed font */
+    font-weight: 400;
+    font-style: normal; /* You can change this to 'italic' if you want the italic style */
+}
+
+/* When an option is selected */
+select option:checked {
+    background-color: #190404; /* Change the background color to black */
+    color: #fff; /* Change the text color to white */
+    font-family: 'Roboto Condensed'; /* Apply Roboto Condensed font */
+    font-weight: 400;
+    font-style: normal; /* You can change this to 'italic' if you want the italic style */
+}
+
+/* For hover effect on options */
+select option:hover {
+    background-color: #333; /* Slight black shade for hover effect */
+    color: #000000; /* Hover text color */
+    font-family: 'Roboto Condensed'; /* Apply Roboto Condensed font */
+    font-weight: 400;
+    font-style: normal; /* You can change this to 'italic' if you want the italic style */
+}
+
+
+
+
+
 
 .icon {
     position: absolute;
@@ -105,19 +188,88 @@ select {
 }
 
 .register-button {
-    background: #007bff00;
-    color: #ffffffb4;
-    padding: 10px 20px;
-    font-size: 1.2rem;
+    background: transparent; /* Transparent background */
+    color: #ffffff;
+    padding: 8px 30px;
+    font-size: 0.8rem;
+    border: solid;
     border-width: 1px;
-    border-radius: 2px;
     cursor: pointer;
     transition: background 0.3s ease;
+    margin-top: 10px;
+    font-family: 'CaribbeanFont', sans-serif; /* Apply the Caribbean font */
+    position: relative;
+    overflow: hidden; /* Hide anything that overflows the button */
+    display: inline-block;
+    font-weight: bold;
 }
 
-.register-button:hover {
-    background: #0057b300;
+.register-text {
+    display: inline-block;
+    position: relative;
+    transition: color 0.3s ease;
 }
+
+.register-text::before,
+.register-text::after {
+    content: 'REGISTER'; /* The text to split */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    color: #ffffff;
+    transition: transform 0.3s ease;
+    clip-path: inset(0 0 50% 0); /* Initially, top half is visible */
+}
+
+.register-text::after {
+    clip-path: inset(50% 0 0 0); /* Bottom half */
+    top: 0;
+}
+
+.register-button:hover .register-text::before {
+    transform: translateX(-1.5px); /* Move the top half up */
+}
+
+.register-button:hover .register-text::after {
+    transform: translateX(1.5px); /* Move the bottom half down */
+}
+
+.register-button:hover .register-text {
+    color: transparent; /* Hide original text when hovered */
+}
+
+.register-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #ffffff; /* The stroke line */
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.register-button:hover::after {
+    transform: scaleX(0.6); /* Show the stroke on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Mute/Unmute Button */
 .mute-button {
@@ -125,6 +277,9 @@ select {
     bottom: 20px;
     right: 20px;
     cursor: pointer;
-    font-size: 1.5rem;
-    color: #ffffffa5;
+    font-size: 1rem;
+    color: #ffffff;
+    border-width: 1px;
+    border-radius: 0px;
+    padding: 10px;
 }
