@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import ReactHowler from "react-howler";
-import { FaChevronDown, FaVolumeMute, FaVolumeUp } from "react-icons/fa";
+import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
+import { SideBar } from "../components/Sidebar";
 import videoBackground from "../Images/background-loop.mp4";
 import backgroundMusic from "../Images/background-music.mp3";
+import logo from '../Images/Lamitie_2k24_Logo.png';
+import controller from '../Images/Side Bar Controller.svg';
 import "./register.css";
 
 export const RegisterFrame = () => {
-    const [isMusicMuted, setIsMusicMuted] = useState(false); 
+    const [isMusicMuted, setIsMusicMuted] = useState(false);
+    const [isSidebarOpen, setSidebarOpen] = useState(false);
 
     const toggleMusicMute = () => setIsMusicMuted(!isMusicMuted);
+
+    const toggleSidebar = () => {
+        setSidebarOpen(!isSidebarOpen);
+    };
 
     return (
         <div className="register-frame">
@@ -20,10 +28,37 @@ export const RegisterFrame = () => {
             {/* Background Music */}
             <ReactHowler src={backgroundMusic} playing={!isMusicMuted} loop={true} volume={0.5} />
 
+            <img src={logo} alt="Logo" className="logo" />
+
             {/* Header */}
-            <header className="header">
-                <h1 className="header-title">Register</h1>
+            <header >
+                <div className="header-options">
+                    <div className="header-title">
+                        <span className="header-text" data-text="Register">
+                            Register
+                        </span>
+                    </div>
+                    <div className="header-title">
+                        <span className="header-text" data-text="Completed">
+                            Completed
+                        </span>
+                    </div>
+                    <div className="header-title">
+                        <span className="header-text" data-text="Sign Out">
+                            Sign Out
+                        </span>
+                    </div>
+                    <img
+                        src={controller}
+                        alt="controller"
+                        className="controller-icon"
+                        onClick={toggleSidebar}
+                    />
+                </div>
             </header>
+
+            {/* Sidebar */}
+            <SideBar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
             {/* Registration Form */}
             <div className="registration-form">
@@ -32,7 +67,6 @@ export const RegisterFrame = () => {
                 {/* Form Fields */}
                 <div className="form-row">
                     <div className="form-group">
-                        <label htmlFor="title">Title</label>
                         <div className="select-wrapper">
                             <select id="title" className="form-control">
                                 <option>Select your title</option>
@@ -40,11 +74,9 @@ export const RegisterFrame = () => {
                                 <option>Ms</option>
                                 <option>Miss</option>
                             </select>
-                            <FaChevronDown className="icon" />
                         </div>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="name">Name</label>
                         <input
                             id="name"
                             type="text"
@@ -56,7 +88,6 @@ export const RegisterFrame = () => {
 
                 <div className="form-row">
                     <div className="form-group">
-                        <label htmlFor="index">Index</label>
                         <input
                             id="index"
                             type="text"
@@ -65,7 +96,6 @@ export const RegisterFrame = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="contact">Contact</label>
                         <input
                             id="contact"
                             type="text"
@@ -77,7 +107,6 @@ export const RegisterFrame = () => {
 
                 <div className="form-row">
                     <div className="form-group">
-                        <label htmlFor="email">Email</label>
                         <input
                             id="email"
                             type="email"
@@ -89,7 +118,6 @@ export const RegisterFrame = () => {
 
                 <div className="form-row">
                     <div className="form-group">
-                        <label htmlFor="combination">Combination</label>
                         <div className="select-wrapper">
                             <select id="combination" className="form-control">
                                 <option>Select your combination</option>
@@ -97,13 +125,14 @@ export const RegisterFrame = () => {
                                 <option>CS/PHY/MAT</option>
                                 <option>CS/AMT/MAT</option>
                             </select>
-                            <FaChevronDown className="icon" />
                         </div>
                     </div>
                 </div>
 
                 {/* Register Button */}
-                <button className="register-button">Register</button>
+                <button className="register-button">
+                    <span className="register-text">REGISTER</span>
+                </button>
             </div>
 
             {/* Mute/Unmute Button */}
@@ -113,6 +142,5 @@ export const RegisterFrame = () => {
         </div>
     );
 };
-
 
 export default RegisterFrame;
