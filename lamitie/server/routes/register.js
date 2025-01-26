@@ -14,8 +14,8 @@ const client = new google.auth.GoogleAuth({
 const sheets = google.sheets({ version: "v4", auth: client });
 
 // Replace with your Google Sheet ID
-const SPREADSHEET_ID = "YOUR_GOOGLE_SHEET_ID_HERE";
-const SHEET_NAME = "Sheet1";
+const SPREADSHEET_ID = "11H05cDTAQNu0La1TNIfdiErvNYqARw5m_KLhPaGObaU";
+const SHEET_NAME = "My project";
 
 // Route to save registration data
 router.post("/", async (req, res) => {

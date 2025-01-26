@@ -12,20 +12,64 @@ import "./register.css";
 export const RegisterFrame = () => {
     const [isMusicMuted, setIsMusicMuted] = useState(false);
     const [isSidebarOpen, setSidebarOpen] = useState(false);
-
+    const [formData, setFormData] = useState({
+        title: "",
+        name: "",
+        index: "",
+        contact: "",
+        email: "",
+        combination: "",
+    });
 
     const navigate = useNavigate();
+
     const handleSignOutClick = () => {
-        navigate("/"); // navigate to register page
-      };
-      const handleCompletedClick = () => {
-        navigate("/completed"); // navigate to register page
-      };
+        navigate("/");
+    };
+
+    const handleCompletedClick = () => {
+        navigate("/completed");
+    };
 
     const toggleMusicMute = () => setIsMusicMuted(!isMusicMuted);
 
     const toggleSidebar = () => {
         setSidebarOpen(!isSidebarOpen);
+    };
+
+    const handleInputChange = (e) => {
+        const { id, value } = e.target;
+        setFormData({ ...formData, [id]: value });
+    };
+
+    const handleFormSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch("http://localhost:5000/api/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                alert("Registration successful!");
+                setFormData({
+                    title: "",
+                    name: "",
+                    index: "",
+                    contact: "",
+                    email: "",
+                    combination: "",
+                });
+            } else {
+                alert("Failed to register. Please try again.");
+            }
+        } catch (error) {
+            console.error("Error during registration:", error);
+            alert("An error occurred. Please try again later.");
+        }
     };
 
     return (
@@ -41,7 +85,7 @@ export const RegisterFrame = () => {
             <img src={logo} alt="Logo" className="logo" />
 
             {/* Header */}
-            <header >
+            <header>
                 <div className="header-options">
                     <div className="header-title">
                         <span className="header-text" data-text="Register">
@@ -54,7 +98,7 @@ export const RegisterFrame = () => {
                         </span>
                     </div>
                     <div className="header-title">
-                        <span className="header-text" onClick ={handleSignOutClick} data-text="Sign Out">
+                        <span className="header-text" onClick={handleSignOutClick} data-text="Sign Out">
                             Sign Out
                         </span>
                     </div>
@@ -71,18 +115,18 @@ export const RegisterFrame = () => {
             <SideBar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
             {/* Registration Form */}
-            <div className="registration-form">
+            <form className="registration-form" onSubmit={handleFormSubmit}>
                 <h2 className="form-title">Register Now</h2>
 
                 {/* Form Fields */}
                 <div className="form-row">
                     <div className="form-group">
                         <div className="select-wrapper">
-                            <select id="title" className="form-control">
-                                <option>Select your title</option>
-                                <option>Mr</option>
-                                <option>Ms</option>
-                                <option>Miss</option>
+                            <select id="title" className="form-control" value={formData.title} onChange={handleInputChange}>
+                                <option value="">Select your title</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Ms">Ms</option>
+                                <option value="Miss">Miss</option>
                             </select>
                         </div>
                     </div>
@@ -92,6 +136,8 @@ export const RegisterFrame = () => {
                             type="text"
                             className="form-control"
                             placeholder="Enter your name"
+                            value={formData.name}
+                            onChange={handleInputChange}
                         />
                     </div>
                 </div>
@@ -103,6 +149,8 @@ export const RegisterFrame = () => {
                             type="text"
                             className="form-control"
                             placeholder="Enter your index"
+                            value={formData.index}
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div className="form-group">
@@ -111,6 +159,8 @@ export const RegisterFrame = () => {
                             type="text"
                             className="form-control"
                             placeholder="Enter your contact"
+                            value={formData.contact}
+                            onChange={handleInputChange}
                         />
                     </div>
                 </div>
@@ -122,6 +172,8 @@ export const RegisterFrame = () => {
                             type="email"
                             className="form-control"
                             placeholder="Enter your email"
+                            value={formData.email}
+                            onChange={handleInputChange}
                         />
                     </div>
                 </div>
@@ -129,21 +181,26 @@ export const RegisterFrame = () => {
                 <div className="form-row">
                     <div className="form-group">
                         <div className="select-wrapper">
-                            <select id="combination" className="form-control">
-                                <option>Select your combination</option>
-                                <option>CS/STAT/MATHS</option>
-                                <option>CS/PHY/MAT</option>
-                                <option>CS/AMT/MAT</option>
+                            <select
+                                id="combination"
+                                className="form-control"
+                                value={formData.combination}
+                                onChange={handleInputChange}
+                            >
+                                <option value="">Select your combination</option>
+                                <option value="CS/STAT/MATHS">CS/STAT/MATHS</option>
+                                <option value="CS/PHY/MAT">CS/PHY/MAT</option>
+                                <option value="CS/AMT/MAT">CS/AMT/MAT</option>
                             </select>
                         </div>
                     </div>
                 </div>
 
                 {/* Register Button */}
-                <button className="register-button">
+                <button type="submit" className="register-button">
                     <span className="register-text">REGISTER</span>
                 </button>
-            </div>
+            </form>
 
             {/* Mute/Unmute Button */}
             <div className="mute-button" onClick={toggleMusicMute}>
