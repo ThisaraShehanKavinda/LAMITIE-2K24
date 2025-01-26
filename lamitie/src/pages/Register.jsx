@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactHowler from "react-howler";
 import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
+import { SideBar } from "../components/Sidebar";
 import videoBackground from "../Images/background-loop.mp4";
 import backgroundMusic from "../Images/background-music.mp3";
 import logo from '../Images/Lamitie_2k24_Logo.png';
@@ -8,9 +9,14 @@ import controller from '../Images/Side Bar Controller.svg';
 import "./register.css";
 
 export const RegisterFrame = () => {
-    const [isMusicMuted, setIsMusicMuted] = useState(false); 
+    const [isMusicMuted, setIsMusicMuted] = useState(false);
+    const [isSidebarOpen, setSidebarOpen] = useState(false);
 
     const toggleMusicMute = () => setIsMusicMuted(!isMusicMuted);
+
+    const toggleSidebar = () => {
+        setSidebarOpen(!isSidebarOpen);
+    };
 
     return (
         <div className="register-frame">
@@ -25,27 +31,34 @@ export const RegisterFrame = () => {
             <img src={logo} alt="Logo" className="logo" />
 
             {/* Header */}
-            <header className="header">
-    
-    
-   {/* Container for the options */}
-<div className="header-options">
-<div class="header-title">
-        <span class="header-text" data-text="Register">Register</span>
-    </div>
-    <div class="header-title">
-        <span class="header-text" data-text="Completed">Completed</span>
-    </div>
-    <div class="header-title">
-        <span class="header-text" data-text="Sign Out">Sign Out</span>
-    </div>
-    <img src={controller} alt="controller" className="controller" />
-</div>
+            <header >
+                <div className="header-options">
+                    <div className="header-title">
+                        <span className="header-text" data-text="Register">
+                            Register
+                        </span>
+                    </div>
+                    <div className="header-title">
+                        <span className="header-text" data-text="Completed">
+                            Completed
+                        </span>
+                    </div>
+                    <div className="header-title">
+                        <span className="header-text" data-text="Sign Out">
+                            Sign Out
+                        </span>
+                    </div>
+                    <img
+                        src={controller}
+                        alt="controller"
+                        className="controller-icon"
+                        onClick={toggleSidebar}
+                    />
+                </div>
+            </header>
 
-    
-    
-</header>
-
+            {/* Sidebar */}
+            <SideBar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
             {/* Registration Form */}
             <div className="registration-form">
@@ -54,7 +67,6 @@ export const RegisterFrame = () => {
                 {/* Form Fields */}
                 <div className="form-row">
                     <div className="form-group">
-                       
                         <div className="select-wrapper">
                             <select id="title" className="form-control">
                                 <option>Select your title</option>
@@ -62,11 +74,9 @@ export const RegisterFrame = () => {
                                 <option>Ms</option>
                                 <option>Miss</option>
                             </select>
-                            
                         </div>
                     </div>
                     <div className="form-group">
-                        
                         <input
                             id="name"
                             type="text"
@@ -78,7 +88,6 @@ export const RegisterFrame = () => {
 
                 <div className="form-row">
                     <div className="form-group">
-                        
                         <input
                             id="index"
                             type="text"
@@ -87,7 +96,6 @@ export const RegisterFrame = () => {
                         />
                     </div>
                     <div className="form-group">
-                        
                         <input
                             id="contact"
                             type="text"
@@ -99,7 +107,6 @@ export const RegisterFrame = () => {
 
                 <div className="form-row">
                     <div className="form-group">
-                        
                         <input
                             id="email"
                             type="email"
@@ -111,7 +118,6 @@ export const RegisterFrame = () => {
 
                 <div className="form-row">
                     <div className="form-group">
-                        
                         <div className="select-wrapper">
                             <select id="combination" className="form-control">
                                 <option>Select your combination</option>
@@ -119,19 +125,14 @@ export const RegisterFrame = () => {
                                 <option>CS/PHY/MAT</option>
                                 <option>CS/AMT/MAT</option>
                             </select>
-                            
                         </div>
                     </div>
                 </div>
 
                 {/* Register Button */}
                 <button className="register-button">
-    <span className="register-text">REGISTER</span>
-</button>
-
-
-
-
+                    <span className="register-text">REGISTER</span>
+                </button>
             </div>
 
             {/* Mute/Unmute Button */}
@@ -141,6 +142,5 @@ export const RegisterFrame = () => {
         </div>
     );
 };
-
 
 export default RegisterFrame;
