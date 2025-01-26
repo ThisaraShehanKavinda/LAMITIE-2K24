@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactHowler from "react-howler";
 import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { SideBar } from "../components/Sidebar";
 import videoBackground from "../Images/background-loop.mp4";
 import backgroundMusic from "../Images/background-music.mp3";
@@ -11,6 +12,15 @@ import "./register.css";
 export const RegisterFrame = () => {
     const [isMusicMuted, setIsMusicMuted] = useState(false);
     const [isSidebarOpen, setSidebarOpen] = useState(false);
+
+
+    const navigate = useNavigate();
+    const handleSignOutClick = () => {
+        navigate("/"); // navigate to register page
+      };
+      const handleCompletedClick = () => {
+        navigate("/completed"); // navigate to register page
+      };
 
     const toggleMusicMute = () => setIsMusicMuted(!isMusicMuted);
 
@@ -39,12 +49,12 @@ export const RegisterFrame = () => {
                         </span>
                     </div>
                     <div className="header-title">
-                        <span className="header-text" data-text="Completed">
+                        <span className="header-text" onClick={handleCompletedClick} data-text="Completed">
                             Completed
                         </span>
                     </div>
                     <div className="header-title">
-                        <span className="header-text" data-text="Sign Out">
+                        <span className="header-text" onClick ={handleSignOutClick} data-text="Sign Out">
                             Sign Out
                         </span>
                     </div>

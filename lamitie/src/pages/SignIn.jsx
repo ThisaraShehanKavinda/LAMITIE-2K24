@@ -1,19 +1,14 @@
-import React, { useState } from "react";
-import ReactHowler from "react-howler";
-import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
+
 import { useNavigate } from "react-router-dom";
-import videoBackground from "../Images/background-loop.mp4";
-import backgroundMusic from "../Images/background-music.mp3";
+
+import videoBackground1 from "../Images/background2.mp4";
 import lamitie2K24Logo from "../Images/Lamitie_2k24_Logo.png";
 import "./SignIn.css";
 
 export const SignInFrame = () => {
   
   
-    const [isMusicMuted, setIsMusicMuted] = useState(false);
-        
-    
-        const toggleMusicMute = () => setIsMusicMuted(!isMusicMuted);
+   
 
   const navigate = useNavigate();
 
@@ -39,13 +34,12 @@ export const SignInFrame = () => {
     }
   }}
 >
-  <source src={videoBackground} type="video/mp4" />
+  <source src={videoBackground1} type="video/mp4" />
 </video>
 
 
 
-            {/* Background Music */}
-            <ReactHowler src={backgroundMusic} playing={!isMusicMuted} loop={true} volume={0.5} />
+           
 
         {/* Logo */}
         <img
@@ -54,10 +48,7 @@ export const SignInFrame = () => {
           src={lamitie2K24Logo}
         />
 
-         {/* Mute/Unmute Button */}
-                    <div className="mute-button" onClick={toggleMusicMute}>
-                        {isMusicMuted ? <FaVolumeMute /> : <FaVolumeUp />}
-                    </div>
+        
 
         {/* Sign In Button */}
         <button className="Signin-Button" onClick={handleSignInClick}>

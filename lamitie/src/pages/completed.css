@@ -1,0 +1,231 @@
+@font-face {
+    font-family: 'Roboto Condensed'; /* Name the font family */
+    src: url('../fonts/RobotoCondensed-VariableFont_wght.ttf') format('truetype'); /* Path to the font file */
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto Condensed'; /* Name the font family */
+    src: url('../fonts/RobotoCondensed-Italic-VariableFont_wght.ttf') format('truetype'); /* Path to the italic font file */
+    font-weight: 400;
+    font-style: italic;
+}
+/* Define the font-face */
+@font-face {
+    font-family: 'CaribbeanFont'; /* Name for your font */
+    src: url('../fonts/MarcellusSC-Regular.ttf') format('truetype'); /* Path to your .ttf font file */
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Pirata One", sans-serif;
+    background: #000; /* Fallback for video */
+    overflow: hidden;
+    
+}
+
+.logo {
+    position: absolute;
+    top: 3%; /* Adjust the top distance from the edge */
+    left: 10%; /* Adjust the left distance from the edge */
+    height: 105px; /* Set the height of the logo */
+    width: auto; /* Keep the aspect ratio intact */
+}
+
+
+.completed-frame {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    z-index: 1;
+    padding-top: 50px;
+}
+
+/* Background Video */
+.background-video {
+    position: fixed; /* Ensures the video stays fixed in the background */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire screen */
+    z-index: -1; /* Push the video to the background */
+    opacity: 0.4; /* Optional: Adds slight transparency for better readability */
+}
+
+
+
+
+
+
+
+
+
+.headers-options {
+    display: flex; /* Arrange the options in a row */
+    gap: 20px; /* Add space between the options */
+    font-family: 'CaribbeanFont', sans-serif; /* Apply the Caribbean font */
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: absolute; /* Position it absolutely within the header */
+    right: 12%; /* Adjust distance from the right side */
+    margin-top: 5.5%;
+    
+}
+
+.header-title {
+    position: relative;
+    color: transparent; /* Hide the base text */
+    cursor: pointer;
+    overflow: hidden; /* Hide overflow to clip text */
+    display: inline-block;
+    padding: 0px 20px; /* Padding for the button */
+     /* Button border */
+    background: transparent; /* Transparent background */
+    font-size: 1rem;
+    transition: background 0.3s ease;
+    
+}
+
+.header-title .header-text {
+    display: inline-block;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.header-title .header-text::before,
+.header-title .header-text::after {
+    content: attr(data-text); /* The text to split */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    color: #ffffff; /* Text color */
+    transition: transform 0.3s ease;
+    clip-path: inset(0 0 50% 0); /* Initially, top half is visible */
+}
+
+.header-title .header-text::after {
+    clip-path: inset(50% 0 0 0); /* Bottom half */
+    top: 0;
+}
+
+/* Hover effect for text */
+.header-title:hover .header-text::before {
+    transform: translateX(-1.5px); /* Move the top half left */
+}
+
+.header-title:hover .header-text::after {
+    transform: translateX(1.5px); /* Move the bottom half right */
+}
+
+.header-title:hover .header-text {
+    color: transparent; /* Hide original text on hover */
+}
+
+/* Stroke line effect */
+.header-title::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #ffffff; /* Stroke color */
+    transform: scaleX(0); /* Hidden by default */
+    transition: transform 0.3s ease;
+    z-index: 1; /* Ensure stroke appears above other elements */
+}
+
+.header-title:hover::after {
+    transform: scaleX(0.8); /* Show the stroke on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Styling for the controller icon */
+.controller-icon {
+    height: 20px; /* Adjust the controller icon size */
+    width: auto;
+    transition: transform 0.3s ease; 
+    padding-left: 10px;
+}
+
+.controller-icon:hover {
+    transform: scale(1.3); /* Slightly enlarge the icon on hover */
+}
+
+
+
+
+
+
+
+
+
+.icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #ccc;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Mute/Unmute Button */
+.mute-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #ffffff;
+    border-width: 1px;
+    border-radius: 0px;
+    padding: 10px;
+}

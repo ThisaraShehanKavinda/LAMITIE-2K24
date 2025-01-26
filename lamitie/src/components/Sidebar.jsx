@@ -1,9 +1,25 @@
 import React, { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import lamitie2K24Logo from "../Images/Lamitie_2k24_Logo.png";
 import "./style.css";
 
 export const SideBar = ({ isOpen, toggleSidebar }) => {
   const sidebarRef = useRef(null);
+
+
+  const navigate = useNavigate();
+      const handleSignOutClick = () => {
+          navigate("/"); 
+        };
+
+        const handleCompletedClick = () => {
+          navigate("/completed"); // navigate to register page
+        };
+
+        const handleRegisterClick = () => {
+          navigate("/register"); // navigate to register page
+        };
+  
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -44,14 +60,19 @@ export const SideBar = ({ isOpen, toggleSidebar }) => {
             src={lamitie2K24Logo}
           />
           <div className="sidebar-menu">
-  <div className="menu-item">
-    <span className="menu-text" data-text="Completed">Completed</span>
+
+
+          <div className="menu-item">
+    <span className="menu-text"   onClick={handleRegisterClick} data-text="Register">Register</span>
   </div>
+
+
   <div className="menu-item">
-    <span className="menu-text" data-text="Register">Register</span>
+    <span className="menu-text" onClick={handleCompletedClick}  data-text="Completed">Completed</span>
   </div>
+  
   <div className="menu-item">
-    <span className="menu-text" data-text="Sign Out">Sign Out</span>
+    <span className="menu-text" onClick={handleSignOutClick} data-text="Sign Out">Sign Out</span>
   </div>
 </div>
 
