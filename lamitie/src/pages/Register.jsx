@@ -30,9 +30,15 @@ export const RegisterFrame = () => {
     
    {/* Container for the options */}
 <div className="header-options">
-    <h1 className="header-title" data-text="Register">Register</h1>
-    <h1 className="header-title" data-text="Completed">Completed</h1>
-    <h1 className="header-title" data-text="Sign Out">Sign Out</h1>
+<div class="header-title">
+        <span class="header-text" data-text="Register">Register</span>
+    </div>
+    <div class="header-title">
+        <span class="header-text" data-text="Completed">Completed</span>
+    </div>
+    <div class="header-title">
+        <span class="header-text" data-text="Sign Out">Sign Out</span>
+    </div>
     <img src={controller} alt="controller" className="controller" />
 </div>
 

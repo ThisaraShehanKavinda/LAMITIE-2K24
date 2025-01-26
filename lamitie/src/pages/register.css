@@ -63,90 +63,103 @@ body, html {
     opacity: 0.4; /* Optional: Adds slight transparency for better readability */
 }
 
-/* Header */
+
+
+
+
+
+
 /* General styling for the header */
 .header {
     display: flex; /* Enable Flexbox */
     justify-content: space-between; /* Space out the logo and controller */
-    
     padding: 20px;
-    
 }
-
-
-
 
 .header-options {
     display: flex; /* Arrange the options in a row */
-    gap: 40px; /* Add space between the options */
+    gap: 20px; /* Add space between the options */
     font-family: 'CaribbeanFont', sans-serif; /* Apply the Caribbean font */
     font-size: 1rem;
     font-weight: bold;
     position: absolute; /* Position it absolutely within the header */
-    right: 15%; /* Adjust distance from the right side */
+    right: 12%; /* Adjust distance from the right side */
 }
 
 .header-title {
     position: relative;
-    color: #ffffff; /* Default text color */
+    color: transparent; /* Hide the base text */
     cursor: pointer;
     overflow: hidden; /* Hide overflow to clip text */
+    display: inline-block;
+    padding: 0px 30px; /* Padding for the button */
+     /* Button border */
+    background: transparent; /* Transparent background */
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+}
+
+.header-title .header-text {
+    display: inline-block;
+    position: relative;
     transition: color 0.3s ease;
 }
 
-.header-title::before,
-.header-title::after {
-    content: attr(data-text); /* Use the same text as the element */
+.header-title .header-text::before,
+.header-title .header-text::after {
+    content: attr(data-text); /* The text to split */
     position: absolute;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
     color: #ffffff; /* Text color */
     transition: transform 0.3s ease;
+    clip-path: inset(0 0 50% 0); /* Initially, top half is visible */
 }
 
-.header-title::before {
+.header-title .header-text::after {
+    clip-path: inset(50% 0 0 0); /* Bottom half */
     top: 0;
-    clip-path: inset(0 0 50% 0); /* Show the top half */
 }
 
+/* Hover effect for text */
+.header-title:hover .header-text::before {
+    transform: translateX(-1.5px); /* Move the top half left */
+}
+
+.header-title:hover .header-text::after {
+    transform: translateX(1.5px); /* Move the bottom half right */
+}
+
+.header-title:hover .header-text {
+    color: transparent; /* Hide original text on hover */
+}
+
+/* Stroke line effect */
 .header-title::after {
-    top: 0;
-    clip-path: inset(50% 0 0 0); /* Show the bottom half */
-}
-
-.header-title:hover::before {
-    transform: translateX(-2px); /* Move the top half up */
-}
-
-.header-title:hover::after {
-    transform: translateX(2px); /* Move the bottom half down */
-}
-
-.header-title:hover {
-    color: transparent; /* Hide original text */
-}
-
-.header-title:hover::after,
-.header-title:hover::before {
-    color: #ffffff;
-}
-
-.header-title::after {
+    content: '';
     position: absolute;
-    top: 100%;
+    top: 50%;
     left: 0;
     width: 100%;
     height: 1px;
-    background: #ffffff; /* Horizontal stroke */
-    transform: scaleX(0);
+    background: #ffffff; /* Stroke color */
+    transform: scaleX(0); /* Hidden by default */
     transition: transform 0.3s ease;
+    z-index: 1; /* Ensure stroke appears above other elements */
 }
 
 .header-title:hover::after {
-    transform: scaleX(1); /* Show the stroke on hover */
+    transform: scaleX(0.6); /* Show the stroke on hover */
 }
+
+
+
+
+
+
 
 
 
