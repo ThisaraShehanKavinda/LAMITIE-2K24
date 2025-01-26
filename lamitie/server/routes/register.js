@@ -15,7 +15,7 @@ const sheets = google.sheets({ version: "v4", auth: client });
 
 // Replace with your Google Sheet ID
 const SPREADSHEET_ID = "11H05cDTAQNu0La1TNIfdiErvNYqARw5m_KLhPaGObaU";
-const SHEET_NAME = "My project";
+const SHEET_NAME = "Sheet1";
 
 // Route to save registration data
 router.post("/", async (req, res) => {
@@ -37,7 +37,7 @@ router.post("/", async (req, res) => {
 
     res.status(200).send({ message: "Registration data saved successfully!" });
   } catch (error) {
-    console.error("Error saving data:", error);
+    console.error("Error details:", error); 
     res.status(500).send({ error: "Failed to save data" });
   }
 });
