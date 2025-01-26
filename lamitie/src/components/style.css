@@ -1,106 +1,146 @@
 /* Sidebar Container */
 .sidebar-container {
-    position: fixed;
-    top: 0;
-    left: -100%; /* Initially hidden */
-    height: 100%;
-    width: 250px;
-    background-color: #100e0e;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: left 0.7s ease; /* Smooth sliding animation */
-    z-index: 9999;
-    box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.5);
-  }
+  position: fixed;
+  top: 0;
+  left: -100%; /* Initially hidden */
+  height: 100%;
+  width: 250px;
+  background-color: #100e0e;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: left 0.7s ease; /* Smooth sliding animation */
+  z-index: 9999;
+  box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Sidebar Open State */
+.sidebar-container.open {
+  left: 0; /* Slide in when open */
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 9998;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible; /* Show the overlay when the sidebar is open */
+  backdrop-filter: blur(2px); /* Apply blur effect to the content behind the sidebar */
+}
+
+/* Sidebar Content */
+.sidebar-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Sidebar Logo */
+.sidebar-logo {
+  width: 150px;
+  margin-bottom: 40px;
+  align-items: center;
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 20px;
+  font-family: 'CaribbeanFont', sans-serif; /* Apply the Caribbean font */
+}
+/* Menu Items with Split Text Effect */
+/* Sidebar Menu Container */
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: 'CaribbeanFont', sans-serif; /* Apply the Caribbean font */
+  padding: 20px;
+  align-items: flex-start; /* Align items to the left */
+}
+
+/* Menu Items with Split Text Effect */
+.menu-item {
+  font-family: 'CaribbeanFont', sans-serif;
+  font-size: 1rem;
+  position: relative;
+  color: #ffffff; /* Base text color */
+  cursor: pointer;
+  overflow: hidden; /* Hide overflow to clip text */
+  display: inline-block;
+  transition: color 0.3s ease;
   
-  /* Sidebar Open State */
-  .sidebar-container.open {
-    left: 0; /* Slide in when open */
-  }
   
-  /* Overlay */
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease;
-    z-index: 9998;
-  }
-  
-  /* Active Overlay */
-  .overlay.active {
-    opacity: 1;
-    visibility: visible; /* Show the overlay when the sidebar is open */
-    backdrop-filter: blur(2px); /* Apply blur effect to the content behind the sidebar */
-  }
-  
-  /* Sidebar Content */
-  .sidebar-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  /* Sidebar Logo */
-  .sidebar-logo {
-    width: 150px;
-    margin-bottom: 40px;
-  }
-  
-  /* Menu Items */
-  .sidebar-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    font-family: 'CaribbeanFont', sans-serif; /* Apply the Caribbean font */
-  }
-  
-  .menu-item {
-    font-family: 'CaribbeanFont', sans-serif; /* Apply the Caribbean font */
-    font-size: 1.1rem;
-    color: #ffffff;
-    cursor: pointer;
-    transition: color 0.3s ease;
-    font-weight: bold;
-  }
-  
-  /* Optional: Add hover effect to menu items */
-  .menu-item:hover {
-    color: #f1f1f1;
-  }
-  
-  /* Header Options */
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #121212;
-    color: #fff;
-  }
-  
-  .header-options {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .header-title {
-    font-family: "CaribbeanFont", sans-serif;
-    font-size: 1rem;
-    cursor: pointer;
-  }
-  
-  .controller-icon {
-    width: 30px;
-    height: auto;
-    cursor: pointer;
-  }
-  
+}
+
+.menu-item .menu-text {
+  display: inline-block;
+  position: relative;
+  transition: color 0.3s ease;
+  color: #ffffff; /* Ensure the text color is visible */
+}
+
+.menu-item .menu-text::before,
+.menu-item .menu-text::after {
+  content: attr(data-text); /* The text to split */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: #ffffff; /* Text color */
+  transition: transform 0.3s ease;
+  clip-path: inset(0 0 50% 0); /* Initially, top half is visible */
+}
+
+.menu-item .menu-text::after {
+  clip-path: inset(50% 0 0 0); /* Bottom half */
+  top: 0;
+}
+
+/* Hover effect for text */
+.menu-item:hover .menu-text::before {
+  transform: translateX(-1.5px); /* Move the top half left */
+}
+
+.menu-item:hover .menu-text::after {
+  transform: translateX(1.5px); /* Move the bottom half right */
+}
+
+.menu-item:hover .menu-text {
+  color: transparent; /* Hide original text on hover */
+}
+
+/* Stroke line effect */
+.menu-item::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #ffffff; /* Stroke color */
+  transform: scaleX(0); /* Hidden by default */
+  transition: transform 0.3s ease;
+  z-index: 1; /* Ensure stroke appears above other elements */
+}
+
+.menu-item:hover::after {
+  transform: scaleX(2); /* Show the stroke on hover */
+}

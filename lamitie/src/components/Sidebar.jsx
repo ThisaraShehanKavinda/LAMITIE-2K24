@@ -44,10 +44,17 @@ export const SideBar = ({ isOpen, toggleSidebar }) => {
             src={lamitie2K24Logo}
           />
           <div className="sidebar-menu">
-            <div className="menu-item">Completed</div>
-            <div className="menu-item">Register</div>
-            <div className="menu-item">Sign Out</div>
-          </div>
+  <div className="menu-item">
+    <span className="menu-text" data-text="Completed">Completed</span>
+  </div>
+  <div className="menu-item">
+    <span className="menu-text" data-text="Register">Register</span>
+  </div>
+  <div className="menu-item">
+    <span className="menu-text" data-text="Sign Out">Sign Out</span>
+  </div>
+</div>
+
         </div>
       </div>
     </>
