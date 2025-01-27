@@ -1,3 +1,4 @@
+
 const express = require("express");
 const { google } = require("googleapis");
 const router = express.Router();
@@ -17,41 +18,16 @@ const sheets = google.sheets({ version: "v4", auth: client });
 const SPREADSHEET_ID = "11H05cDTAQNu0La1TNIfdiErvNYqARw5m_KLhPaGObaU";
 const SHEET_NAME = "Sheet1";
 
-// Route to save registration data
-router.post("/", async (req, res) => {
-  const { title, name, index, contact, email, combination } = req.body;
-
-  try {
-    const timestamp = new Date().toISOString();
-    const values = [[timestamp, title, name, index, contact, email, combination]];
-
-    // Append data to the sheet
-    await sheets.spreadsheets.values.append({
-      spreadsheetId: SPREADSHEET_ID,
-      range: `${SHEET_NAME}!A:G`,
-      valueInputOption: "USER_ENTERED",
-      requestBody: {
-        values,
-      },
-    });
-
-    res.status(200).send({ message: "Registration data saved successfully!" });
-  } catch (error) {
-    console.error("Error details:", error); 
-    res.status(500).send({ error: "Failed to save data" });
-  }
-});
-
-
-
+// Route to get completed data from the Google Sheet
 router.get("/getCompletedData", async (req, res) => {
   try {
+    // Fetch data from Google Sheets
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: SPREADSHEET_ID,
       range: `${SHEET_NAME}!A:G`, // Get all the columns from the sheet
     });
 
-    // Send the rows (skipping the header row)
+    // Process the data and structure it for the frontend
     const rows = response.data.values.slice(1).map((row) => ({
       timestamp: row[0],
       title: row[1],
@@ -62,6 +38,7 @@ router.get("/getCompletedData", async (req, res) => {
       combination: row[6],
     }));
 
+    // Send the data as JSON
     res.status(200).json(rows);
   } catch (error) {
     console.error("Error fetching completed data:", error);

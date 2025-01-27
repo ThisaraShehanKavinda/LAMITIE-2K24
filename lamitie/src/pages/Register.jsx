@@ -220,7 +220,7 @@ export const RegisterFrame = () => {
 
         {/* Register Button */}
         <button type="submit" className="register-button">
-          <span className="register-text">REGISTER</span>
+          <span className="register-text">Register</span>
         </button>
       </form>
 
