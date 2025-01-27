@@ -11,14 +11,13 @@
     font-weight: 400;
     font-style: italic;
 }
-/* Define the font-face */
+
 @font-face {
     font-family: 'CaribbeanFont'; /* Name for your font */
     src: url('../fonts/MarcellusSC-Regular.ttf') format('truetype'); /* Path to your .ttf font file */
     font-weight: normal;
     font-style: normal;
 }
-
 
 body, html {
     margin: 0;
@@ -27,7 +26,6 @@ body, html {
     font-family: "Pirata One", sans-serif;
     background: #000; /* Fallback for video */
     overflow: hidden;
-    
 }
 
 .logo {
@@ -38,50 +36,50 @@ body, html {
     width: auto; /* Keep the aspect ratio intact */
 }
 
-
-.completed-frame {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
+.search-container {
+    position: absolute;
+    top: 25%; /* Positioned below the logo */
+    left: 15%;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    background: rgba(255, 255, 255, 0);
+    border-bottom: 1px solid #fff;
+    border-radius: 0px;
+    padding: 5px 10px;
+    z-index: 2;
+}
+
+.search-icon {
     color: #ffffff;
-    z-index: 1;
-    padding-top: 50px;
+    font-size: 1.2rem;
+    margin-right: 15px;
 }
 
-/* Background Video */
-.background-video {
-    position: fixed; /* Ensures the video stays fixed in the background */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the video covers the entire screen */
-    z-index: -1; /* Push the video to the background */
-    opacity: 0.4; /* Optional: Adds slight transparency for better readability */
+.search-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 5px;
+    font-family: "Roboto Condensed";
 }
 
-
-
-
-
-
-
-
+.search-input::placeholder {
+    color: #cccccc;
+    font-family: "Roboto Condensed";
+}
 
 .headers-options {
-    display: flex; /* Arrange the options in a row */
-    gap: 20px; /* Add space between the options */
+    display: flex;
+    flex-direction: row; /* Stack header options vertically */
+    gap: 20px; /* Add space between each option */
     font-family: 'CaribbeanFont', sans-serif; /* Apply the Caribbean font */
     font-size: 1.5rem;
     font-weight: bold;
-    position: absolute; /* Position it absolutely within the header */
+    position: absolute;
+    top: 12.5%; /* Align with the logo */
     right: 12%; /* Adjust distance from the right side */
-    margin-top: 5.5%;
-    
 }
 
 .header-title {
@@ -91,11 +89,9 @@ body, html {
     overflow: hidden; /* Hide overflow to clip text */
     display: inline-block;
     padding: 0px 20px; /* Padding for the button */
-     /* Button border */
     background: transparent; /* Transparent background */
     font-size: 1rem;
     transition: background 0.3s ease;
-    
 }
 
 .header-title .header-text {
@@ -154,31 +150,10 @@ body, html {
     transform: scaleX(0.8); /* Show the stroke on hover */
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Styling for the controller icon */
 .controller-icon {
     height: 20px; /* Adjust the controller icon size */
     width: auto;
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease;
     padding-left: 10px;
 }
 
@@ -186,38 +161,30 @@ body, html {
     transform: scale(1.3); /* Slightly enlarge the icon on hover */
 }
 
-
-
-
-
-
-
-
-
-.icon {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    color: #ccc;
+.completed-frame {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+    z-index: 1;
+     /* Enable scrolling */
+    padding-top: 12%;
 }
 
+.background-video {
+    position: fixed; /* Ensures the video stays fixed in the background */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire screen */
+    z-index: -1; /* Push the video to the background */
+    opacity: 0.6; /* Optional: Adds slight transparency for better readability */
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Mute/Unmute Button */
 .mute-button {
     position: absolute;
     bottom: 20px;
@@ -228,4 +195,114 @@ body, html {
     border-width: 1px;
     border-radius: 0px;
     padding: 10px;
+}
+
+.table-title {
+    
+    margin-top: 6%;
+    font-size: 1.5rem;
+    color: white;
+    font-family: "CaribbeanFont", sans-serif;
+    text-align: center;
+    font-weight: bold;
+    
+}
+
+.table-container {
+    margin-top: 3%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 400px; /* Set the height limit for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrolling unless necessary */
+    border: 0px solid #ffffff; /* Optional border for clarity */
+    border-radius: 0px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for better visibility */
+    
+}
+
+/* Optional scrollbar styling (modern look) */
+.table-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.completed-table {
+    border-collapse: collapse;
+    width: 100%;
+    background: transparent;
+    text-align: center;
+    font-family: 'CaribbeanFont', sans-serif;
+}
+
+.completed-table th,
+.completed-table td {
+    border: 1px solid rgb(0, 0, 0);
+    padding: 10px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.completed-table th {
+    color: white;
+    font-size: 16px;
+}
+
+.completed-table td {
+    color: white;
+    font-size: 15px;
+}
+
+.completed-table .index-column {
+    color: rgb(131, 131, 22);
+    font-weight: bold;
+}
+
+.completed-table tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly visible alternating rows */
+}
+
+.completed-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Highlighted row */
+}
+
+.notification-card {
+    position: fixed;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    z-index: 100;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.notification-card.success {
+    background: #28a745;
+}
+
+.notification-card.error {
+    background: #dc3545;
+}
+
+.close-button {
+    margin-top: 10px;
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-family: 'Roboto Condensed', sans-serif;
 }
