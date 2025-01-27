@@ -406,3 +406,51 @@ select option:hover {
     border-radius: 0px;
     padding: 10px;
 }
+
+
+.notification-card {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    font-family: 'CaribbeanFont', sans-serif;
+  }
+  
+  .notification-card.success {
+    background-color: #132214eb;
+    color: #ffffff;
+    border: 2px solid #969425;
+    border-radius: 0%;
+    font-family: 'CaribbeanFont', sans-serif;
+    
+  }
+  
+  .notification-card.error {
+    background-color: #370c0f;
+    color: #ffffff;
+    border: 2px solid #ff0019;
+    font-family: 'CaribbeanFont', sans-serif;
+  }
+  
+  .notification-card .close-button {
+    margin-top: 10px;
+    padding: 5px 30px;
+    background-color: #00000000;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+    font-family: 'CaribbeanFont', sans-serif;
+  }
+  
+  .notification-card .close-button:hover {
+    background-color: #e2e6ea;
+    color: #000;
+    font-family: 'CaribbeanFont', sans-serif;
+  }
+  

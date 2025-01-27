@@ -229,3 +229,48 @@ body, html {
     border-radius: 0px;
     padding: 10px;
 }
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.completed-table {
+    border-collapse: collapse;
+    width: 80%;
+    background: transparent;
+    text-align: center;
+}
+
+.completed-table th,
+.completed-table td {
+    border: 1px solid rgb(0, 0, 0);
+    padding: 10px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.completed-table th {
+    color: white;
+    font-size: 18px;
+}
+
+.completed-table td {
+    color: white;
+    font-size: 16px;
+}
+
+.completed-table .index-column {
+    color: yellow;
+    font-weight: bold;
+}
+
+.completed-table tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly visible alternating rows */
+}
+
+.completed-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Highlighted row */
+}
