@@ -23,7 +23,7 @@ export const RegisterFrame = () => {
 
   const [notification, setNotification] = useState({
     message: "",
-    type: "", // success or error
+    type: "", 
     show: false,
   });
 
